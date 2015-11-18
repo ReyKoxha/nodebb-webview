@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!-- Navigation Items -->
+	<string-array name="navigation_title_list">
+		<item>Home</item>
+		<item>Forum</item>
+		<item>Shop</item>
+		<item>Firmwares</item>
+		<item>F.A.Q.</item>
+	</string-array>
+
+	<!--URL's-->
+	<string-array name="navigation_url_list">
+		<item>https://meizufans.eu/</item>
+		<item>https://meizufans.eu/forum</item>
+		<item>https://meizufans.eu/shop</item>
+		<item>https://meizufans.eu/firmwares</item>
+		<item>https://meizufans.eu/f-a-q</item>
+	</string-array>
+
+	<!-- Navigation Icons -->
+	<string-array name="navigation_icon_list">
+		<item>@drawable/ic_drawer_home</item>
+		<item>@drawable/ic_drawer_comment</item>
+		<item>@drawable/ic_drawer_shop</item>
+		<item>@drawable/ic_drawer_settings</item>
+		<item>@drawable/ic_drawer_help</item>
+	</string-array>
+
+
+</resources>

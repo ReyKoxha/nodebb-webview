@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<style name="Theme.WebView" parent="@style/Theme.AppCompat.Light">
+		<item name="windowActionBar">false</item>
+		<item name="windowActionModeOverlay">true</item>
+
+		<item name="android:windowBackground">@color/global_bg_back</item>
+		<item name="android:navigationBarColor">@color/theme_navigation_bar</item>
+		<item name="android:colorButtonNormal">@color/theme_button_normal</item>
+
+		<item name="colorPrimary">@color/global_color_primary</item>
+		<item name="colorPrimaryDark">@color/global_color_primary_dark</item>
+		<item name="colorAccent">@color/global_color_accent</item>
+		<item name="colorControlNormal">@color/global_color_control_normal</item>
+		<item name="colorControlActivated">@color/global_color_control_activated</item>
+		<item name="colorControlHighlight">@color/global_color_control_highlight</item>
+		<item name="colorSwitchThumbNormal">@color/global_color_switch_thumb_normal</item>
+
+		<item name="android:textColorPrimary">@color/global_text_primary</item>
+		<item name="android:textColorPrimaryInverse">@color/global_text_primary_inverse</item>
+		<item name="android:textColorPrimaryDisableOnly">@color/global_text_primary_disable_only</item>
+		<item name="android:textColorSecondary">@color/global_text_secondary</item>
+		<item name="android:textColorSecondaryInverse">@color/global_text_secondary_inverse</item>
+		<item name="android:textColorTertiary">@color/global_text_tertiary</item>
+		<item name="android:textColorTertiaryInverse">@color/global_text_tertiary_inverse</item>
+		<item name="android:textColorHint">@color/global_text_hint</item>
+		<item name="android:textColorHintInverse">@color/global_text_hint_inverse</item>
+		<item name="android:textColorHighlight">@color/global_text_highlight</item>m>
+		<item name="android:textColorLink">@color/global_text_link</item>
+
+		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_gray</item>
+	</style>
+
+	<!-- Blue -->
+	<style name="Theme.WebView.Blue" parent="@style/Theme.WebView">
+		<item name="colorPrimary">@color/global_color_blue_primary</item>
+		<item name="colorPrimaryDark">@color/global_color_blue_primary_dark</item>
+		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_blue</item>
+	</style>
+
+	<!-- Brown -->
+	<style name="Theme.WebView.Brown" parent="@style/Theme.WebView">
+		<item name="colorPrimary">@color/global_color_brown_primary</item>
+		<item name="colorPrimaryDark">@color/global_color_brown_primary_dark</item>
+		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_brown</item>
+	</style>
+
+	<!-- Gray -->
+	<style name="Theme.WebView.Gray" parent="@style/Theme.WebView">
+		<item name="colorPrimary">@color/global_color_gray_primary</item>
+		<item name="colorPrimaryDark">@color/global_color_gray_primary_dark</item>
+		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_gray</item>
+	</style>
+
+	<!-- Green -->
+	<style name="Theme.WebView.Green" parent="@style/Theme.WebView">
+		<item name="colorPrimary">@color/global_color_green_primary</item>
+		<item name="colorPrimaryDark">@color/global_color_green_primary_dark</item>
+		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_green</item>
+	</style>
+
+	<!-- Lime -->
+	<style name="Theme.WebView.Lime" parent="@style/Theme.WebView">
+		<item name="colorPrimary">@color/global_color_lime_primary</item>
+		<item name="colorPrimaryDark">@color/global_color_lime_primary_dark</item>
+		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_lime</item>
+	</style>
+
+	<!-- Orange -->
+	<style name="Theme.WebView.Orange" parent="@style/Theme.WebView">
+		<item name="colorPrimary">@color/global_color_orange_primary</item>
+		<item name="colorPrimaryDark">@color/global_color_orange_primary_dark</item>
+		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_orange</item>
+	</style>
+
+	<!-- Purple -->
+	<style name="Theme.WebView.Purple" parent="@style/Theme.WebView">
+		<item name="colorPrimary">@color/global_color_purple_primary</item>
+		<item name="colorPrimaryDark">@color/global_color_purple_primary_dark</item>
+		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_purple</item>
+	</style>
+
+	<!-- Red -->
+	<style name="Theme.WebView.Red" parent="@style/Theme.WebView">
+		<item name="colorPrimary">@color/global_color_red_primary</item>
+		<item name="colorPrimaryDark">@color/global_color_red_primary_dark</item>
+		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_red</item>
+	</style>
+
+	<!-- Teal -->
+	<style name="Theme.WebView.Teal" parent="@style/Theme.WebView">
+		<item name="colorPrimary">@color/global_color_teal_primary</item>
+		<item name="colorPrimaryDark">@color/global_color_teal_primary_dark</item>
+		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_teal</item>
+	</style>
+
+	<!-- Violet -->
+	<style name="Theme.WebView.Violet" parent="@style/Theme.WebView">
+		<item name="colorPrimary">@color/global_color_violet_primary</item>
+		<item name="colorPrimaryDark">@color/global_color_violet_primary_dark</item>
+		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_violet</item>
+	</style>
+
+</resources>

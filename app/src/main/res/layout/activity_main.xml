@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<include layout="@layout/toolbar" />
+
+	<android.support.v4.widget.DrawerLayout
+		android:id="@+id/activity_main_layout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<FrameLayout
+			android:id="@+id/activity_main_container"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
+
+		<ListView
+			android:id="@+id/activity_main_drawer"
+			android:layout_width="@dimen/drawer_width"
+			android:layout_height="match_parent"
+			android:layout_gravity="start"
+			android:choiceMode="singleChoice"
+			android:drawSelectorOnTop="true"
+			android:fastScrollEnabled="false"
+			android:listSelector="@drawable/selector_clickable_item_bg"
+			android:background="@color/global_bg_front" />
+
+	</android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>

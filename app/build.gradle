@@ -1,0 +1,127 @@
+// 		  gradlew assembleDebug           Build debug APK
+//        gradlew assembleRelease         Build production APK
+//        gradle wrapper                  Create Gradle Wrapper
+
+
+final VERSION_MAJOR = 1
+final VERSION_MINOR = 0
+final VERSION_PATCH = 0
+final VERSION_BUILD = 0
+
+
+apply plugin: 'com.android.application'
+
+
+dependencies
+{
+	compile 'com.android.support:support-v4:22.0.0'
+	compile 'com.android.support:appcompat-v7:22.0.0'
+	compile 'com.google.android.gms:play-services:6.1.71'
+	compile 'com.parse.bolts:bolts-android:1.+'
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+
+android
+{
+	compileSdkVersion 22
+	buildToolsVersion "22.0.1"
+
+	defaultConfig
+	{
+		minSdkVersion 10
+		targetSdkVersion 22
+		versionCode VERSION_MAJOR*10000000 + VERSION_MINOR*100000 + VERSION_PATCH*1000 + VERSION_BUILD
+		versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
+	}
+
+	signingConfigs
+	{
+		release
+		{
+			storeFile file("../${project.property('keystore.file')}")
+			storePassword ""
+			keyAlias ""
+			keyPassword ""
+		}
+	}
+
+	buildTypes
+	{
+		debug
+		{
+			versionNameSuffix "-debug"
+		}
+
+		release
+		{
+			signingConfig signingConfigs.release
+			zipAlignEnabled true
+			minifyEnabled false
+			shrinkResources false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+
+	applicationVariants.all
+	{
+		variant ->
+			if(variant.buildType.name.equals("release"))
+			{
+				variant.outputs.each
+				{
+					output ->
+						def outputFile = output.outputFile
+						def date = new Date()
+						if(outputFile!=null && outputFile.name.endsWith('.apk'))
+						{
+							def fileName = outputFile.name.replace(
+									"app",
+									"webview-" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "-" + date.format('yyyyMMdd'))
+							output.outputFile = new File((String) outputFile.parent, (String) fileName)
+						}
+				}
+			}
+	}
+}
+
+
+task askForPasswords <<
+{
+	def storePass
+	def keyAlias
+	def keyPass
+
+	def keystorePropertiesFile = new File(project.property("keystore.properties"))
+
+	if(project.hasProperty("keystore.properties") && keystorePropertiesFile.exists())
+	{
+		println "Loading keystore passwords from property file..."
+		Properties properties = new Properties()
+		properties.load(new FileInputStream(keystorePropertiesFile))
+		storePass = properties['keystore.store.password']
+		keyAlias  = properties['keystore.key.alias']
+		keyPass  = properties['keystore.key.password']
+	}
+	else
+	{
+		println "Getting keystore passwords from user input..."
+		storePass = new String(System.console().readPassword("\nStore password: "))
+		keyAlias  = new String(System.console().readLine("Key alias: "))
+		keyPass  = new String(System.console().readPassword("Key password: "))
+	}
+
+	android.signingConfigs.release.storePassword = storePass
+	android.signingConfigs.release.keyAlias = keyAlias
+	android.signingConfigs.release.keyPassword = keyPass
+}
+
+
+tasks.whenTaskAdded
+{
+	theTask ->
+	if(theTask.name.equals("packageRelease"))
+	{
+		theTask.dependsOn "askForPasswords"
+	}
+}

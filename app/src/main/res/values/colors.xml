@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="global_color_primary">#9e9e9e</color>
+	<color name="global_color_primary_dark">#616161</color>
+	<color name="global_color_accent">#bdbdbd</color>
+	<color name="global_color_control_normal">#8a000000</color>
+	<color name="global_color_control_activated">#ff9e9e9e</color>
+	<color name="global_color_control_highlight">#40000000</color>
+	<color name="global_color_switch_thumb_normal">#fff1f1f1</color>
+
+	<color name="global_color_blue_primary">#2196f3</color>
+	<color name="global_color_blue_primary_dark">#1976d2</color>
+	<color name="global_color_blue_primary_light">#bbdefb</color>
+	<color name="global_color_brown_primary">#795548</color>
+	<color name="global_color_brown_primary_dark">#5d4037</color>
+	<color name="global_color_brown_primary_light">#d7ccc8</color>
+	<color name="global_color_gray_primary">#9e9e9e</color>
+	<color name="global_color_gray_primary_dark">#616161</color>
+	<color name="global_color_gray_primary_light">#eeeeee</color>
+	<color name="global_color_green_primary">#4caf50</color>
+	<color name="global_color_green_primary_dark">#388e3c</color>
+	<color name="global_color_green_primary_light">#c8e6c9</color>
+	<color name="global_color_lime_primary">#cddc39</color>
+	<color name="global_color_lime_primary_dark">#afb42b</color>
+	<color name="global_color_lime_primary_light">#f0f4c3</color>
+	<color name="global_color_orange_primary">#ff9800</color>
+	<color name="global_color_orange_primary_dark">#f57c00</color>
+	<color name="global_color_orange_primary_light">#ffe0b2</color>
+	<color name="global_color_purple_primary">#9c27b0</color>
+	<color name="global_color_purple_primary_dark">#7b1fa2</color>
+	<color name="global_color_purple_primary_light">#e1bee7</color>
+	<color name="global_color_red_primary">#f44336</color>
+	<color name="global_color_red_primary_dark">#d32f2f</color>
+	<color name="global_color_red_primary_light">#ffcdd2</color>
+	<color name="global_color_teal_primary">#009688</color>
+	<color name="global_color_teal_primary_dark">#00796b</color>
+	<color name="global_color_teal_primary_light">#b2dfdb</color>
+	<color name="global_color_violet_primary">#673ab7</color>
+	<color name="global_color_violet_primary_dark">#512da8</color>
+	<color name="global_color_violet_primary_light">#d1c4e9</color>
+
+	<color name="global_text_primary">#de000000</color>
+	<color name="global_text_primary_inverse">#ffffff</color>
+	<color name="global_text_primary_disable_only">#000000</color>
+	<color name="global_text_secondary">#8a000000</color>
+	<color name="global_text_secondary_inverse">#b3ffffff</color>
+	<color name="global_text_tertiary">#8a000000</color>
+	<color name="global_text_tertiary_inverse">#b3ffffff</color>
+	<color name="global_text_hint">#80000000</color>
+	<color name="global_text_hint_inverse">#80ffffff</color>
+	<color name="global_text_highlight">#669e9e9e</color>
+	<color name="global_text_link">#9e9e9e</color>
+
+	<color name="global_bg_back">#ffeeeeee</color>
+	<color name="global_bg_back_inverse">#ff303030</color>
+	<color name="global_bg_front">#ffffff</color>
+	<color name="global_bg_front_inverse">#000000</color>
+	<color name="global_bg_dialog">#eeeeee</color>
+	<color name="global_bg_dialog_inverse">#424242</color>
+
+	<color name="theme_navigation_bar">#000000</color>
+	<color name="theme_button_normal">#ffd6d7d7</color>
+</resources>

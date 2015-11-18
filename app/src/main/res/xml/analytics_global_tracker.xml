@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyDashes">
+	<string name="ga_logLevel">verbose</string> <!-- Log Level -->
+	<integer name="ga_dispatchPeriod">30</integer> <!-- Dispatcher Period -->
+	<bool name="ga_dryRun">false</bool> <!-- Treat events as tests? -->
+	<string name="com.webview.nodebb.activity.MainActivity">Main Activity</string> <!-- Name for reports -->
+</resources>

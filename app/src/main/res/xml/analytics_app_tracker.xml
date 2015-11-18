@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyDashes">
+	<string name="ga_trackingId">UA-XXXXXXXXX</string> <!-- Analytics ID -->
+	<string name="ga_sampleFrequency">100.0</string> <!-- Percentage of events to include in reports -->
+	<bool name="ga_autoActivityTracking">true</bool> <!-- Enable automatic measurement -->
+	<bool name="ga_reportUncaughtExceptions">true</bool> <!-- Catch and report uncaught exceptions -->
+	<integer name="ga_sessionTimeout">-1</integer> <!-- How long a session exists -->
+
+	<!--If Analaytics is enabled you can declare a name for the apps to be shown -->
+	<screenName name="com.webview.nodebb.activity.MainActivity">Main Activity</screenName>
+</resources>
