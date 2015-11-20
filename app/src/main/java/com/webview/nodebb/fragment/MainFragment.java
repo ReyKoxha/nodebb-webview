@@ -358,6 +358,8 @@ public class MainFragment extends TaskFragment implements SwipeRefreshLayout.OnR
         webView.getSettings().setSupportZoom(true); // Support zoom
         webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE); // Disable caching
         webView.getSettings().setJavaScriptEnabled(true); // Enable JavaScript Support
+        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        webView.getSettings().setDomStorageEnabled(true);
         webView.setBackgroundColor(getResources().getColor(R.color.global_bg_front));
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY); // Required for Froyo
         webView.setWebChromeClient(new WebChromeClient() {
