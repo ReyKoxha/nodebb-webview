@@ -10,7 +10,7 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 	<application
-		android:name=".GTracker"
+		android:name="com.webview.nodebb.GTracker"
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name"
 		android:theme="@style/Theme.WebView.Blue"
@@ -21,7 +21,7 @@
 		<meta-data android:name="com.google.android.gms.analytics.globalConfigResource" android:resource="@xml/analytics_global_tracker" />
 		
 		<activity
-			android:name=".activity.MainActivity"
+			android:name="com.webview.nodebb.activity.MainActivity"
 			android:label="@string/app_name"
 			android:launchMode="standard"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize">

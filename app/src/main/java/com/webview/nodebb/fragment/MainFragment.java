@@ -410,7 +410,7 @@ public class MainFragment extends TaskFragment implements SwipeRefreshLayout.OnR
                 runTaskCallback(new Runnable() {
                     public void run() {
                         if (getActivity() != null && mSuccess) {
-                            showContent(500); // "Animation"
+                            showContent(0); // "Animation"
                             showActionBarProgress(false);
                         }
                     }

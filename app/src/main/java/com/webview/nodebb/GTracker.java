@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
+import com.webview.nodebb.R;
 
 
 public class GTracker extends Application
