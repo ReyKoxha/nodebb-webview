@@ -7,7 +7,6 @@ import android.net.MailTo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -35,16 +34,14 @@ import com.webview.nodebb.view.ViewState;
 import java.io.File;
 
 
-public class MainFragment extends TaskFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class MainFragment extends TaskFragment {
     private static final String ARGUMENT_URL = "url";
-    private static final String ARGUMENT_SHARE = "share";
     private static final int REQUEST_FILE_PICKER = 1;
 
     private boolean mActionBarProgress = false;
     private ViewState mViewState = null;
     private View mRootView;
     private String mUrl = "about:blank";
-    private String mShare;
     private boolean mLocal = false;
     private ValueCallback<Uri> mFilePathCallback4;
     private ValueCallback<Uri[]> mFilePathCallback5;
@@ -99,10 +96,6 @@ public class MainFragment extends TaskFragment implements SwipeRefreshLayout.OnR
 
         // Setup webview
         renderView();
-
-        // Pull to refresh
-        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_swipe_refresh);
-        swipeRefreshLayout.setOnRefreshListener(this);
 
         // Load and show data
         if (mViewState == null || mViewState == ViewState.OFFLINE) {
@@ -223,17 +216,6 @@ public class MainFragment extends TaskFragment implements SwipeRefreshLayout.OnR
     }
 
 
-    @Override
-    public void onRefresh() {
-        runTaskCallback(new Runnable() {
-            @Override
-            public void run() {
-                refreshData();
-            }
-        });
-    }
-
-
     private void handleArguments(Bundle arguments) {
         if (arguments.containsKey(ARGUMENT_URL)) {
             mUrl = arguments.getString(ARGUMENT_URL);
@@ -254,27 +236,7 @@ public class MainFragment extends TaskFragment implements SwipeRefreshLayout.OnR
     }
 
 
-    // Reload
-    public void refreshData() {
-        if (NetworkInf.isOnline(getActivity()) || mLocal) {
-            showActionBarProgress(true);
-
-            WebView webView = (WebView) mRootView.findViewById(R.id.fragment_main_webview);
-            webView.loadUrl(webView.getUrl());
-        } else {
-            showActionBarProgress(false);
-            Toast.makeText(getActivity(), R.string.global_offline_toast, Toast.LENGTH_LONG).show();
-        }
-    }
-
-
     private void showActionBarProgress(boolean visible) {
-	// Swipe to refresh
-        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.container_swipe_refresh);
-
-        swipeRefreshLayout.setRefreshing(visible);
-        swipeRefreshLayout.setEnabled(!visible);
-
         mActionBarProgress = visible;
     }
 
@@ -536,12 +498,6 @@ public class MainFragment extends TaskFragment implements SwipeRefreshLayout.OnR
     private void controlStop() {
         final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_main_webview);
         webView.stopLoading();
-    }
-
-
-    private void controlReload() {
-        final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_main_webview);
-        webView.reload();
     }
 
 
