@@ -1,51 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-	<LinearLayout
-		android:id="@+id/container_content"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/container_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-			<WebView
-				android:id="@+id/fragment_main_webview"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:background="@color/global_bg_front" />
 
-		<com.google.android.gms.ads.AdView
-			android:id="@+id/fragment_main_adview"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center"
-			app:adUnitId="@string/admob_unit_id"
-			app:adSize="BANNER" />
+        <WebView
+            android:id="@+id/fragment_main_webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/global_bg_front" />
 
-	</LinearLayout>
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/fragment_main_adview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:adSize="BANNER"
+            app:adUnitId="@string/admob_unit_id" />
 
-	<include
-		layout="@layout/placeholder_progress"
-		android:id="@+id/container_progress"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:visibility="gone" />
+    </LinearLayout>
 
-	<include
-		layout="@layout/placeholder_offline"
-		android:id="@+id/container_offline"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:visibility="gone" />
+    <include
+        android:id="@+id/container_progress"
+        layout="@layout/placeholder_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
-	<include
-		layout="@layout/placeholder_empty"
-		android:id="@+id/container_empty"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:visibility="gone" />
+    <include
+        android:id="@+id/container_offline"
+        layout="@layout/placeholder_offline"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/container_empty"
+        layout="@layout/placeholder_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </FrameLayout>

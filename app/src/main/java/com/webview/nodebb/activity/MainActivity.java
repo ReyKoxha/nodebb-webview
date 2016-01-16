@@ -20,9 +20,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.webview.nodebb.GTracker;
-import com.webview.nodebb.R;
 import com.google.android.gms.analytics.GoogleAnalytics;
+import com.webview.nodebb.R;
+import com.webview.nodebb.WebAppApplication;
 import com.webview.nodebb.adapter.DrawerAdapter;
 import com.webview.nodebb.fragment.MainFragment;
 
@@ -51,8 +51,8 @@ public class MainActivity extends ActionBarActivity {
         setupActionBar();
         setupDrawer(savedInstanceState);
 
-        // Initiate Analaytics
-        ((GTracker) getApplication()).getTracker();
+        // Initialize Analytics Tracker
+        ((WebAppApplication) getApplication()).getTracker();
     }
 
 
@@ -60,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
     public void onStart() {
         super.onStart();
 
-        // Start Analytics instance
+        // Start Analytics Instance
         GoogleAnalytics.getInstance(this).reportActivityStart(this);
     }
 
@@ -81,7 +81,7 @@ public class MainActivity extends ActionBarActivity {
     public void onStop() {
         super.onStop();
 
-        // Stop Analytics instance
+        // Stop Analytics Instance
         GoogleAnalytics.getInstance(this).reportActivityStop(this);
     }
 
@@ -94,19 +94,19 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Sidebar
+        // Menu
         return super.onCreateOptionsMenu(menu);
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Open or Close Drawer
+        // Open/Close drawer if Home button is pressed
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
 
-        // Sidebar behaviour
+        // Menu behaviour
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intent = MainActivity.newIntent(this);
@@ -157,10 +157,9 @@ public class MainActivity extends ActionBarActivity {
         mTitle = getTitle();
         mDrawerTitle = getTitle();
 
-        // Get Navigation Elements
         mTitles = getResources().getStringArray(R.array.navigation_title_list);
 
-        // Get Navigation Icons
+        // Icons
         TypedArray iconTypedArray = getResources().obtainTypedArray(R.array.navigation_icon_list);
         Integer[] icons = new Integer[iconTypedArray.length()];
         for (int i = 0; i < iconTypedArray.length(); i++) {
@@ -168,10 +167,13 @@ public class MainActivity extends ActionBarActivity {
         }
         iconTypedArray.recycle();
 
+        // References
         mDrawerLayout = (DrawerLayout) findViewById(R.id.activity_main_layout);
         mDrawerListView = (ListView) findViewById(R.id.activity_main_drawer);
 
+        // Set Drawer
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED); // Disables Drawer!
         mDrawerListView.setAdapter(new DrawerAdapter(this, mTitles, icons));
         mDrawerListView.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -194,6 +196,7 @@ public class MainActivity extends ActionBarActivity {
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
+        // Show Fragment
         if (savedInstanceState == null) {
             selectDrawerItem(0, true);
         }
@@ -211,5 +214,4 @@ public class MainActivity extends ActionBarActivity {
         if (!init) setTitle(mTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerListView);
     }
-
 }

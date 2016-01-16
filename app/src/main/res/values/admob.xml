@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyDashes">
-	<string name="admob_unit_id">ca-app-pub-XXXXXXXXXXXXXXXXXXXXXXXXX</string> <!-- AdMob Ad ID -->
-	<string name="admob_test_device_id">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</string> <!-- Test ID -->
+    <!-- AdMob ID -->
+    <string name="admob_unit_id" translatable="false">ca-app-pub-XXXXXXXXXXXXXXXXXXXXXXXXXXXX</string>
+    <!-- Test ID -->
+    <string name="admob_test_device_id" translatable="false">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</string>
 </resources>

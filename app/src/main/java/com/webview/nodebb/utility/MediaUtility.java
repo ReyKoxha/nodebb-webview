@@ -10,7 +10,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 
 
-// See: http://stackoverflow.com/a/20559175
+// Code from http://stackoverflow.com/a/20559175
 public class MediaUtility {
     /**
      * Get a file path from a Uri. This will get the the path for Storage Access

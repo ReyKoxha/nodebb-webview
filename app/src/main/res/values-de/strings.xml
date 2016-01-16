@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="admob_test_device_id"></string>
+    <string name="drawer_close">Drawer schließen</string>
+    <string name="drawer_open">Drawer öffnen</string>
+    <string name="fragment_main_downloading">Downloade...</string>
+    <string name="global_offline_toast">Es konnte keine Verbindung hergestellt werden!</string>
+    <string name="placeholder_offline">Es konnte keine Verbindung hergestellt werden!</string>
+    <string name="placeholder_empty">Nicht gefunden!</string>
+    <string name="admob_unit_id"></string>
+</resources>

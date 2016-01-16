@@ -3,23 +3,33 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.webview.nodebb"
 	android:installLocation="auto">
-	
+
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+	<!-- Replace com.webview.nodebb with your package name! -->
+	<permission android:protectionLevel="signature" android:name="com.webview.nodebb.permission.C2D_MESSAGE" />
+	<uses-permission android:name="com.webview.nodebb.permission.C2D_MESSAGE" />
 
 	<application
-		android:name="com.webview.nodebb.GTracker"
+		android:name="com.webview.nodebb.WebAppApplication"
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name"
-		android:theme="@style/Theme.WebView.Blue"
+		android:theme="@style/Theme.WebApp.Blue"
 		android:hardwareAccelerated="true"
 		android:allowBackup="true">
 
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 		<meta-data android:name="com.google.android.gms.analytics.globalConfigResource" android:resource="@xml/analytics_global_tracker" />
-		
+
 		<activity
 			android:name="com.webview.nodebb.activity.MainActivity"
 			android:label="@string/app_name"
@@ -34,6 +44,26 @@
 		<activity
 			android:name="com.google.android.gms.ads.AdActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|smallestScreenSize" />
+
+		<!-- Parse -->
+		<service android:name="com.parse.PushService" />
+		<receiver android:name="com.parse.ParsePushBroadcastReceiver"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="com.parse.push.intent.RECEIVE" />
+				<action android:name="com.parse.push.intent.DELETE" />
+				<action android:name="com.parse.push.intent.OPEN" />
+			</intent-filter>
+		</receiver>
+		<receiver android:name="com.parse.GcmBroadcastReceiver"
+			android:permission="com.google.android.c2dm.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+				<!-- Replace com.webview.nodebb with your package name! -->
+				<category android:name="com.webview.nodebb" />
+			</intent-filter>
+		</receiver>
 
 	</application>
 </manifest>

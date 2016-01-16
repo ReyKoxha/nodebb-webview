@@ -1,26 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<!-- Navigation Items -->
-	<string-array name="navigation_title_list">
-		<item>Home</item>
-		<item>Community</item>
-		<item>Blog</item>
-	</string-array>
+    <!-- Navigation Items -->
+    <string-array name="navigation_title_list">
+        <item>Home</item>
+    </string-array>
 
-	<!--URL's-->
-	<string-array name="navigation_url_list">
-		<item>https://nodebb.org/</item>
-		<item>https://community.nodebb.org/</item>
-		<item>https://blog.nodebb.org/</item>
-	</string-array>
+    <!-- URLs -->
+    <string-array name="navigation_url_list">
+        <item>https://community.nodebb.org/</item>
 
-	<!-- Navigation Icons -->
-	<string-array name="navigation_icon_list">
-		<item>@drawable/ic_drawer_home</item>
-		<item>@drawable/ic_drawer_forum</item>
-		<item>@drawable/ic_drawer_blog</item>
-	</string-array>
+    </string-array>
+
+    <!-- Navigation Icons -->
+    <string-array name="navigation_icon_list">
+        <item>@drawable/ic_drawer_home</item>
+    </string-array>
 
 
 </resources>

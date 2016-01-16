@@ -26,23 +26,28 @@ public class DrawerAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+        // Inflate View
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.drawer_item, parent, false);
 
+            // View Holder
             ViewHolder holder = new ViewHolder();
             holder.titleTextView = (TextView) view.findViewById(R.id.drawer_item_title);
             holder.iconImageView = (ImageView) view.findViewById(R.id.drawer_item_icon);
             view.setTag(holder);
         }
 
+        // Entity
         String title = mTitleList[position];
         Integer icon = mIconList[position];
 
         if (title != null && icon != null) {
+            // View Holder
             ViewHolder holder = (ViewHolder) view.getTag();
 
+            // Content
             holder.titleTextView.setText(title);
             holder.iconImageView.setImageResource(icon);
         }

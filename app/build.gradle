@@ -1,12 +1,14 @@
-// 		  gradlew assembleDebug           Build debug APK
+// Main build script for app
+// 
+// Usage: gradlew assembleDebug           Build debug APK
 //        gradlew assembleRelease         Build production APK
 //        gradle wrapper                  Create Gradle Wrapper
 
 
-final VERSION_MAJOR = 1
-final VERSION_MINOR = 2
-final VERSION_PATCH = 0
-final VERSION_BUILD = 0
+final VERSION_MAJOR = 1 // Max 2 digits
+final VERSION_MINOR = 3 // Max 2 digits
+final VERSION_PATCH = 0 // Max 2 digits
+final VERSION_BUILD = 0 // Max 3 digits
 
 
 apply plugin: 'com.android.application'
@@ -35,10 +37,15 @@ android
 		versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
 	}
 
+	lintOptions {
+		checkReleaseBuilds false
+	}
+
 	signingConfigs
 	{
 		release
 		{
+			// Obtain Password and Alias
 			storeFile file("../${project.property('keystore.file')}")
 			storePassword ""
 			keyAlias ""
@@ -77,7 +84,7 @@ android
 						{
 							def fileName = outputFile.name.replace(
 									"app",
-									"webview-" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "-" + date.format('yyyyMMdd'))
+									"WebApp-" + defaultConfig.versionName + "-" + defaultConfig.versionCode)
 							output.outputFile = new File((String) outputFile.parent, (String) fileName)
 						}
 				}
@@ -105,7 +112,7 @@ task askForPasswords <<
 	}
 	else
 	{
-		println "Getting keystore passwords from user input..."
+		println "Getting keystore passwords..."
 		storePass = new String(System.console().readPassword("\nStore password: "))
 		keyAlias  = new String(System.console().readLine("Key alias: "))
 		keyPass  = new String(System.console().readPassword("Key password: "))

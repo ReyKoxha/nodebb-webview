@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<style name="Theme.WebView" parent="@style/Theme.AppCompat.Light">
+	<!-- Base -->
+	<style name="Theme.WebApp" parent="@style/Theme.AppCompat.Light">
 		<item name="windowActionBar">false</item>
 		<item name="windowActionModeOverlay">true</item>
 
@@ -33,70 +34,70 @@
 	</style>
 
 	<!-- Blue -->
-	<style name="Theme.WebView.Blue" parent="@style/Theme.WebView">
+	<style name="Theme.WebApp.Blue" parent="Theme.AppCompat.Light.NoActionBar">
 		<item name="colorPrimary">@color/global_color_blue_primary</item>
 		<item name="colorPrimaryDark">@color/global_color_blue_primary_dark</item>
 		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_blue</item>
 	</style>
 
 	<!-- Brown -->
-	<style name="Theme.WebView.Brown" parent="@style/Theme.WebView">
+	<style name="Theme.WebApp.Brown" parent="Theme.AppCompat.Light.NoActionBar">
 		<item name="colorPrimary">@color/global_color_brown_primary</item>
 		<item name="colorPrimaryDark">@color/global_color_brown_primary_dark</item>
 		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_brown</item>
 	</style>
 
 	<!-- Gray -->
-	<style name="Theme.WebView.Gray" parent="@style/Theme.WebView">
+	<style name="Theme.WebApp.Gray" parent="Theme.AppCompat.Light.NoActionBar">
 		<item name="colorPrimary">@color/global_color_gray_primary</item>
 		<item name="colorPrimaryDark">@color/global_color_gray_primary_dark</item>
 		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_gray</item>
 	</style>
 
 	<!-- Green -->
-	<style name="Theme.WebView.Green" parent="@style/Theme.WebView">
+	<style name="Theme.WebApp.Green" parent="Theme.AppCompat.Light.NoActionBar">
 		<item name="colorPrimary">@color/global_color_green_primary</item>
 		<item name="colorPrimaryDark">@color/global_color_green_primary_dark</item>
 		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_green</item>
 	</style>
 
 	<!-- Lime -->
-	<style name="Theme.WebView.Lime" parent="@style/Theme.WebView">
+	<style name="Theme.WebApp.Lime" parent="Theme.AppCompat.Light.NoActionBar">
 		<item name="colorPrimary">@color/global_color_lime_primary</item>
 		<item name="colorPrimaryDark">@color/global_color_lime_primary_dark</item>
 		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_lime</item>
 	</style>
 
 	<!-- Orange -->
-	<style name="Theme.WebView.Orange" parent="@style/Theme.WebView">
+	<style name="Theme.WebApp.Orange" parent="Theme.AppCompat.Light.NoActionBar">
 		<item name="colorPrimary">@color/global_color_orange_primary</item>
 		<item name="colorPrimaryDark">@color/global_color_orange_primary_dark</item>
 		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_orange</item>
 	</style>
 
 	<!-- Purple -->
-	<style name="Theme.WebView.Purple" parent="@style/Theme.WebView">
+	<style name="Theme.WebApp.Purple" parent="Theme.AppCompat.Light.NoActionBar">
 		<item name="colorPrimary">@color/global_color_purple_primary</item>
 		<item name="colorPrimaryDark">@color/global_color_purple_primary_dark</item>
 		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_purple</item>
 	</style>
 
 	<!-- Red -->
-	<style name="Theme.WebView.Red" parent="@style/Theme.WebView">
+	<style name="Theme.WebApp.Red" parent="Theme.AppCompat.Light.NoActionBar">
 		<item name="colorPrimary">@color/global_color_red_primary</item>
 		<item name="colorPrimaryDark">@color/global_color_red_primary_dark</item>
 		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_red</item>
 	</style>
 
 	<!-- Teal -->
-	<style name="Theme.WebView.Teal" parent="@style/Theme.WebView">
+	<style name="Theme.WebApp.Teal" parent="Theme.AppCompat.Light.NoActionBar">
 		<item name="colorPrimary">@color/global_color_teal_primary</item>
 		<item name="colorPrimaryDark">@color/global_color_teal_primary_dark</item>
 		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_teal</item>
 	</style>
 
 	<!-- Violet -->
-	<style name="Theme.WebView.Violet" parent="@style/Theme.WebView">
+	<style name="Theme.WebApp.Violet" parent="Theme.AppCompat.Light.NoActionBar">
 		<item name="colorPrimary">@color/global_color_violet_primary</item>
 		<item name="colorPrimaryDark">@color/global_color_violet_primary_dark</item>
 		<item name="drawerItemBackground">@drawable/selector_selectable_item_bg_violet</item>

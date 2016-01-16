@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,10 +23,10 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.webview.nodebb.R;
-import com.webview.nodebb.WebViewConfig;
-import com.webview.nodebb.utility.DownloadUtil;
+import com.webview.nodebb.WebAppConfig;
+import com.webview.nodebb.utility.DownloadUtility;
 import com.webview.nodebb.utility.MediaUtility;
-import com.webview.nodebb.utility.NetworkInf;
+import com.webview.nodebb.utility.NetworkManager;
 import com.webview.nodebb.view.ViewState;
 
 import java.io.File;
@@ -36,6 +34,7 @@ import java.io.File;
 
 public class MainFragment extends TaskFragment {
     private static final String ARGUMENT_URL = "url";
+    private static final String ARGUMENT_SHARE = "share";
     private static final int REQUEST_FILE_PICKER = 1;
 
     private boolean mActionBarProgress = false;
@@ -50,6 +49,7 @@ public class MainFragment extends TaskFragment {
     public static MainFragment newInstance(String url) {
         MainFragment fragment = new MainFragment();
 
+        // Args
         Bundle arguments = new Bundle();
         arguments.putString(ARGUMENT_URL, url);
         fragment.setArguments(arguments);
@@ -71,6 +71,7 @@ public class MainFragment extends TaskFragment {
         setHasOptionsMenu(true);
         setRetainInstance(true);
 
+        // Handle Fragment
         Bundle arguments = getArguments();
         if (arguments != null) {
             handleArguments(arguments);
@@ -89,15 +90,16 @@ public class MainFragment extends TaskFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        // Restore WebView state
         if (savedInstanceState != null) {
             WebView webView = (WebView) mRootView.findViewById(R.id.fragment_main_webview);
             webView.restoreState(savedInstanceState);
         }
 
-        // Setup webview
+        // Render WebView
         renderView();
 
-        // Load and show data
+        // Load & Show Data
         if (mViewState == null || mViewState == ViewState.OFFLINE) {
             loadData();
         } else if (mViewState == ViewState.CONTENT) {
@@ -107,11 +109,7 @@ public class MainFragment extends TaskFragment {
         } else if (mViewState == ViewState.EMPTY) {
             showEmpty();
         }
-
-        // progress in action bar
-        showActionBarProgress(mActionBarProgress);
     }
-
 
     @Override
     public void onStart() {
@@ -156,6 +154,7 @@ public class MainFragment extends TaskFragment {
     }
 
 
+    // File Pickers
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == REQUEST_FILE_PICKER) {
@@ -189,7 +188,7 @@ public class MainFragment extends TaskFragment {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        // Save instance state
+        // Save Instance state
         super.onSaveInstanceState(outState);
         setUserVisibleHint(true);
 
@@ -200,19 +199,8 @@ public class MainFragment extends TaskFragment {
 
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // Action Bar Menu
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
-    }
-
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        return super.onOptionsItemSelected(item);
     }
 
 
@@ -223,11 +211,13 @@ public class MainFragment extends TaskFragment {
         }
     }
 
-    // Load URL
+
     private void loadData() {
-        if (NetworkInf.isOnline(getActivity()) || mLocal) {
+        if (NetworkManager.isOnline(getActivity()) || mLocal) {
+            // Progress
             showProgress();
 
+            // Load URL
             WebView webView = (WebView) mRootView.findViewById(R.id.fragment_main_webview);
             webView.loadUrl(mUrl);
         } else {
@@ -236,12 +226,8 @@ public class MainFragment extends TaskFragment {
     }
 
 
-    private void showActionBarProgress(boolean visible) {
-        mActionBarProgress = visible;
-    }
-
-
     private void showContent() {
+        // Show Content
         ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
         ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
         ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
@@ -271,8 +257,9 @@ public class MainFragment extends TaskFragment {
         timerHandler.postDelayed(timerRunnable, delay);
     }
 
-    // Progressbar
+
     private void showProgress() {
+        // Show Progress
         ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
         ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
         ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
@@ -284,8 +271,9 @@ public class MainFragment extends TaskFragment {
         mViewState = ViewState.PROGRESS;
     }
 
-    // Offline
+
     private void showOffline() {
+        // Show Offline
         ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
         ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
         ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
@@ -297,8 +285,9 @@ public class MainFragment extends TaskFragment {
         mViewState = ViewState.OFFLINE;
     }
 
-    // Not found/Empty
+
     private void showEmpty() {
+        // Show Empty
         ViewGroup containerContent = (ViewGroup) mRootView.findViewById(R.id.container_content);
         ViewGroup containerProgress = (ViewGroup) mRootView.findViewById(R.id.container_progress);
         ViewGroup containerOffline = (ViewGroup) mRootView.findViewById(R.id.container_offline);
@@ -312,6 +301,7 @@ public class MainFragment extends TaskFragment {
 
 
     private void renderView() {
+        // References
         final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_main_webview);
         final AdView adView = (AdView) mRootView.findViewById(R.id.fragment_main_adview);
 
@@ -322,10 +312,10 @@ public class MainFragment extends TaskFragment {
         webView.getSettings().setJavaScriptEnabled(true); // Enable JavaScript Support
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setUserAgentString("NODEBB-APP"); // Custom User Agent
         webView.setBackgroundColor(getResources().getColor(R.color.global_bg_front));
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY); // Required for Froyo
         webView.setWebChromeClient(new WebChromeClient() {
-	    // File Chooser
             public void openFileChooser(ValueCallback<Uri> filePathCallback) {
                 mFilePathCallback4 = filePathCallback;
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -334,7 +324,7 @@ public class MainFragment extends TaskFragment {
                 startActivityForResult(Intent.createChooser(intent, "File Chooser"), REQUEST_FILE_PICKER);
             }
 
-	    // File Chooser
+
             public void openFileChooser(ValueCallback filePathCallback, String acceptType) {
                 mFilePathCallback4 = filePathCallback;
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -343,7 +333,7 @@ public class MainFragment extends TaskFragment {
                 startActivityForResult(Intent.createChooser(intent, "File Chooser"), REQUEST_FILE_PICKER);
             }
 
-	    // File Chooser
+
             public void openFileChooser(ValueCallback<Uri> filePathCallback, String acceptType, String capture) {
                 mFilePathCallback4 = filePathCallback;
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -352,7 +342,7 @@ public class MainFragment extends TaskFragment {
                 startActivityForResult(Intent.createChooser(intent, "File Chooser"), REQUEST_FILE_PICKER);
             }
 
-	    // File Chooser
+
             @Override
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams fileChooserParams) {
                 mFilePathCallback5 = filePathCallback;
@@ -372,15 +362,13 @@ public class MainFragment extends TaskFragment {
                 runTaskCallback(new Runnable() {
                     public void run() {
                         if (getActivity() != null && mSuccess) {
-                            showContent(0); // "Animation"
-                            showActionBarProgress(false);
+                            showContent(100); // Delay in ms
                         }
                     }
                 });
             }
 
 
-	    // Error behaviour - returns empty viewstate
             @Override
             public void onReceivedError(final WebView view, final int errorCode, final String description, final String failingUrl) {
                 runTaskCallback(new Runnable() {
@@ -388,7 +376,6 @@ public class MainFragment extends TaskFragment {
                         if (getActivity() != null) {
                             mSuccess = false;
                             showEmpty();
-                            showActionBarProgress(false);
                         }
                     }
                 });
@@ -397,35 +384,44 @@ public class MainFragment extends TaskFragment {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (DownloadUtil.isDownloadableFile(url)) {
+                if (DownloadUtility.isDownloadableFile(url)) {
                     Toast.makeText(getActivity(), R.string.fragment_main_downloading, Toast.LENGTH_LONG).show();
-                    DownloadUtil.downloadFile(getActivity(), url, DownloadUtil.getFileName(url));
+                    DownloadUtility.downloadFile(getActivity(), url, DownloadUtility.getFileName(url));
                     return true;
                 } else if (url != null && (url.startsWith("http://") || url.startsWith("https://"))) {
+                    // External or Internal
                     boolean external = isLinkExternal(url);
                     boolean internal = isLinkInternal(url);
                     if (!external && !internal) {
-                        external = WebViewConfig.OPEN_LINKS_IN_EXTERNAL_BROWSER;
+                        external = WebAppConfig.OPEN_LINKS_IN_EXTERNAL_BROWSER;
                     }
 
+                    // Open Link
                     if (external) {
                         startWebActivity(url);
                         return true;
                     } else {
-                        showActionBarProgress(true);
                         return false;
                     }
-                } else if (url != null && url.startsWith("mailto:")) {
+                }
+                // Mail
+                else if (url != null && url.startsWith("mailto:")) {
                     MailTo mailTo = MailTo.parse(url);
                     startEmailActivity(mailTo.getTo(), mailTo.getSubject(), mailTo.getBody());
                     return true;
-                } else if (url != null && url.startsWith("tel:")) {
+                }
+                // Tel
+                else if (url != null && url.startsWith("tel:")) {
                     startCallActivity(url);
                     return true;
-                } else if (url != null && url.startsWith("sms:")) {
+                }
+                // SMS
+                else if (url != null && url.startsWith("sms:")) {
                     startSmsActivity(url);
                     return true;
-                } else if (url != null && url.startsWith("geo:")) {
+                }
+                // Maps
+                else if (url != null && url.startsWith("geo:")) {
                     startMapSearchActivity(url);
                     return true;
                 } else {
@@ -470,7 +466,7 @@ public class MainFragment extends TaskFragment {
         });
 
         // AdMob
-        if (WebViewConfig.ADMOB && NetworkInf.isOnline(getActivity())) {
+        if (WebAppConfig.ADMOB && NetworkManager.isOnline(getActivity())) {
             AdRequest adRequest = new AdRequest.Builder()
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                     .addTestDevice(getString(R.string.admob_test_device_id))
@@ -501,15 +497,22 @@ public class MainFragment extends TaskFragment {
     }
 
 
+    private void controlReload() {
+        final WebView webView = (WebView) mRootView.findViewById(R.id.fragment_main_webview);
+        webView.reload();
+    }
+
+
     private void startWebActivity(String url) {
         try {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
+            // FAILURE
         }
     }
 
-    // Email
+
     private void startEmailActivity(String email, String subject, String text) {
         try {
             StringBuilder builder = new StringBuilder();
@@ -521,47 +524,51 @@ public class MainFragment extends TaskFragment {
             intent.putExtra(android.content.Intent.EXTRA_TEXT, text);
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
+            // FAILURE
         }
     }
 
-    // Phone
+
     private void startCallActivity(String url) {
         try {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(url));
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
+            // FAILURE
         }
     }
 
-    // SMS
+
     private void startSmsActivity(String url) {
         try {
             Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(url));
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
+            // FAILURE
         }
     }
 
-    // Maps
+
     private void startMapSearchActivity(String url) {
         try {
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(intent);
         } catch (android.content.ActivityNotFoundException e) {
+            // FAILURE
         }
     }
 
-    // External link
+
     private boolean isLinkExternal(String url) {
-        for (String rule : WebViewConfig.LINKS_OPENED_IN_EXTERNAL_BROWSER) {
+        for (String rule : WebAppConfig.LINKS_OPENED_IN_EXTERNAL_BROWSER) {
             if (url.contains(rule)) return true;
         }
         return false;
     }
 
-    // Internal link
+
     private boolean isLinkInternal(String url) {
-        for (String rule : WebViewConfig.LINKS_OPENED_IN_INTERNAL_WEBVIEW) {
+        for (String rule : WebAppConfig.LINKS_OPENED_IN_INTERNAL_WEBVIEW) {
             if (url.contains(rule)) return true;
         }
         return false;

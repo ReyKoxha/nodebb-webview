@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">NodeBB</string>
+    <!-- App Name -->
+    <string name="app_name" translatable="false">NodeBB Community</string>
 
-	<string name="global_offline_toast">There was a connection issue!</string>
+    <!-- Strings -->
+    <string name="global_offline_toast">NO CONNECTION FOUND!</string>
 
-	<string name="drawer_open">Open navigation drawer</string>
-	<string name="drawer_close">Close navigation drawer</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 
-	<string name="placeholder_empty">Not found.</string>
-	<string name="placeholder_offline">There was a connection issue!</string>
+    <string name="placeholder_empty">Not found!</string>
+    <string name="placeholder_offline">NO CONNECTION FOUND!</string>
 
-	<string name="fragment_main_downloading">Downloading…</string>
+    <string name="fragment_main_downloading">Downloading…</string>
 </resources>
