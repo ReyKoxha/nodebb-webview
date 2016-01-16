@@ -20,14 +20,16 @@ Basically the code itself is very simple. You can find the main code in /app/src
 
 Here a little explanation for all java files:
 
-- **GTracker.java**:
-Creates a Google Analytics instance for tracking.
+- **WebAppApplication.java**:
+Creates a Google Analytics & Parse instance.
 
 - **MainActivity.java**:
 Is what the end user sees. It calls all other java files and creates the actual application.
 
-- **WebViewConfig.java**:
-Almost self-explaining. Allows you to enable or disable specific elements, like Google Analytics or AdMob.
+**The drawer has been locked in this release. To disable it go to line 176 and remove it!**
+
+- **WebAppConfig.java**:
+Almost self-explaining. Allows you to enable or disable specific elements, like Google Analytics, AdMob or Parse.
 
 - **drawer/DrawerAdapter.java**:
 Declares the functions of the drawer.
@@ -100,8 +102,8 @@ A.: Same way as you added an app icon, however, this time make sure it is a “L
 Q.: How do I get an APK?
 
 A.: First of all, you need to create a keystore by running:
-keytool -genkey -v -keystore webviewapp.keystore -alias <YOURALIAS> -keyalg RSA -keysize 2048 -validity 36500
+keytool -genkey -v -keystore webapp.keystore -alias <YOURALIAS> -keyalg RSA -keysize 2048 -validity 36500
 
-Then enter the alias and the password into webviewapp.properties.
+Then enter the alias and the password into webapp.properties.
 
 Now run “gradlew assemble”. The APK can be found at app/build/outputs.
