@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 
-import com.webview.nodebb.WebViewConfig;
+import com.webview.nodebb.WebAppConfig;
 
 
 public class DownloadUtil {
@@ -45,7 +45,7 @@ public class DownloadUtil {
         }
         url = url.toLowerCase();
 
-        for (String type : WebViewConfig.DOWNLOAD_FILE_TYPES) {
+        for (String type : WebAppConfig.DOWNLOAD_FILE_TYPES) {
             if (url.endsWith(type)) return true;
         }
 
