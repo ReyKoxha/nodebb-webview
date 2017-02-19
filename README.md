@@ -14,4 +14,4 @@ However, our focus is to provide a mobile app for NodeBB.
 - Sidebar support
 
 ### Docs
-(/wiki)[Click here to get to the Wiki!]
+[Click here to get to the Wiki!](/wiki)
