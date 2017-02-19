@@ -11,10 +11,6 @@ public class WebAppConfig {
     // Open links in browser, instead of WebView
     public static final boolean OPEN_LINKS_IN_EXTERNAL_BROWSER = false;
 
-    // Parse
-    public static final String PARSE_APP_ID = "PLACEHOLDER";
-    public static final String PARSE_CLIENT_KEY = "PLACEHOLDER";
-
     // Open in external browser/app
     public static final String[] LINKS_OPENED_IN_EXTERNAL_BROWSER = {
             "target=blank",
