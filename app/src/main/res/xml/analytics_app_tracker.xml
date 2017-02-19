@@ -6,6 +6,6 @@
     <string name="ga_sampleFrequency">100.0</string>
     <bool name="ga_autoActivityTracking">true</bool>
     <bool name="ga_reportUncaughtExceptions">true</bool>
-    <integer name="ga_sessionTimeout">-1</integer>>
+    <integer name="ga_sessionTimeout">-1</integer>
     <screenName name="com.webview.nodebb.activity.MainActivity">Main Activity</screenName>
 </resources>
