@@ -10,6 +10,7 @@ public class WebAppApplication extends Application {
     private static WebAppApplication mInstance;
 
     private Tracker mTracker;
+	private String oneSignalPlayerId;
 
 
     public WebAppApplication() {
@@ -29,6 +30,13 @@ public class WebAppApplication extends Application {
         }
 
         OneSignal.startInit(this).init();
+		
+        OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
+            @Override
+            public void idsAvailable(String userId, String registrationId) {
+                setOneSignalPlayerId(userId);
+            }
+        });		
     }
 
 
@@ -45,4 +53,12 @@ public class WebAppApplication extends Application {
         }
         return mTracker;
     }
+	
+    public String getOneSignalPlayerId() {
+        return oneSignalPlayerId;
+    }
+
+    public void setOneSignalPlayerId(String oneSignalPlayerId) {
+        this.oneSignalPlayerId = oneSignalPlayerId;
+    }	
 }

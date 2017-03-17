@@ -24,6 +24,7 @@ dependencies
 	compile "com.google.android.gms:play-services-gcm:10.2.0"
 	compile "com.google.android.gms:play-services-location:10.2.0"
 	compile 'com.onesignal:OneSignal:3.+@aar'
+	compile 'commons-io:commons-io:2.4'
 }
 
 
@@ -35,7 +36,7 @@ android
 	defaultConfig
 	{
 		multiDexEnabled true
-		minSdkVersion 14
+		minSdkVersion 19
 		targetSdkVersion 25
 		versionCode VERSION_MAJOR*10000000 + VERSION_MINOR*100000 + VERSION_PATCH*1000 + VERSION_BUILD
 		versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
