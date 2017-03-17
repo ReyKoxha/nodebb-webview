@@ -23,13 +23,18 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.webview.nodebb.R;
+import com.webview.nodebb.WebAppApplication;
 import com.webview.nodebb.WebAppConfig;
 import com.webview.nodebb.utility.DownloadUtility;
 import com.webview.nodebb.utility.MediaUtility;
 import com.webview.nodebb.utility.NetworkManager;
 import com.webview.nodebb.view.ViewState;
 
+import org.apache.commons.io.IOUtils;
+
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 
 public class MainFragment extends TaskFragment {
@@ -362,6 +367,18 @@ public class MainFragment extends TaskFragment {
                 runTaskCallback(new Runnable() {
                     public void run() {
                         if (getActivity() != null && mSuccess) {
+
+                            InputStream is = getResources().openRawResource(R.raw.post_player_id);
+                            String js = "";
+                            try {
+                                js = String.format(IOUtils.toString(is),((WebAppApplication)getActivity().getApplication()).getOneSignalPlayerId());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            IOUtils.closeQuietly(is);
+
+                            webView.evaluateJavascript(js, null);
+
                             showContent(100); // Delay in ms
                         }
                     }
