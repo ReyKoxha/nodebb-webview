@@ -18,3 +18,7 @@ However, our focus is to provide a mobile app for NodeBB.
 
 ### Docs
 [Click here to get to the Wiki!](https://github.com/ReyKoxha/nodebb-webview/wiki)
+
+
+### Credits
+[CCob](https://github.com/CCob)
