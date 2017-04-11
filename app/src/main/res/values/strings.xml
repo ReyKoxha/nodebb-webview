@@ -13,4 +13,7 @@
     <string name="placeholder_offline">NO CONNECTION FOUND!</string>
 
     <string name="fragment_main_downloading">Downloading…</string>
+    
+    <!-- GCM Sender ID -->
+    <string name="gcm_defaultSenderId">674XXXXXXXX</string>
 </resources>
