@@ -1,6 +1,7 @@
 # NodeBB WebView App
 <br>
-[![GitHub release](https://img.shields.io/github/release/ReyKoxha/nodebb-webview.svg)](https://github.com/ReyKoxha/nodebb-webview/releases)
+[![GitHub license](https://img.shields.io/github/license/ReyKoxha/nodebb-webview.svg)](https://github.com/ReyKoxha/nodebb-webview/blob/master/LICENSE.md)
+[![GitHub stars](https://img.shields.io/github/stars/ReyKoxha/nodebb-webview.svg)](https://github.com/ReyKoxha/nodebb-webview/stargazers)
 
 ### Welcome to the NodeBB WebView app.
 With this code you can create your own Android app to display any website.
