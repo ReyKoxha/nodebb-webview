@@ -1,7 +1,5 @@
 # NodeBB WebView App
 <br>
-[![Github All Releases](https://img.shields.io/github/downloads/ReyKoxha/nodebb-webview/total.svg)](https://github.com/ReyKoxha/nodebb-webview/releases)
-
 [![GitHub release](https://img.shields.io/github/release/ReyKoxha/nodebb-webview.svg)](https://github.com/ReyKoxha/nodebb-webview/releases)
 
 ### Welcome to the NodeBB WebView app.
