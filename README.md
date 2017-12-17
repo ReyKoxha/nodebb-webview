@@ -1,6 +1,6 @@
 # NodeBB WebView App
-<br>
 [![GitHub license](https://img.shields.io/github/license/ReyKoxha/nodebb-webview.svg)](https://github.com/ReyKoxha/nodebb-webview/blob/master/LICENSE.md)
+
 [![GitHub stars](https://img.shields.io/github/stars/ReyKoxha/nodebb-webview.svg)](https://github.com/ReyKoxha/nodebb-webview/stargazers)
 
 ### Welcome to the NodeBB WebView app.
