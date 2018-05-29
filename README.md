@@ -22,4 +22,4 @@ However, our focus is to provide a mobile app for NodeBB.
 [CCob](https://github.com/CCob)
 
 ## Video
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/GNykegU1Z08/0.jpg)](https://www.youtube.com/watch?v=GNykegU1Z08)
+[![NodeBB WebView Demo](https://img.youtube.com/vi/GNykegU1Z08/0.jpg)](https://www.youtube.com/watch?v=GNykegU1Z08)
